@@ -3,6 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Claude Skill](https://img.shields.io/badge/Claude-Skill-D97757)
 
+📚 Faz parte da **[biblioteca de skills de mozuraa](https://github.com/mozuraa/claude-skills)** · Part of **[mozuraa's skills library](https://github.com/mozuraa/claude-skills)**
+
 **[Português](#português) · [English](#english)**
 
 ---
