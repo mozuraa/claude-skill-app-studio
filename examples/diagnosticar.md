@@ -1,4 +1,4 @@
-# Exemplo de utilização — app-doctor
+# Exemplo de utilização — app-studio, modo Diagnosticar
 
 > Exemplo ilustrativo, com uma app fictícia. Os relatórios reais dependem do que for encontrado — cada problema vem com a prova (linha de código, registo de crash, captura, medição).
 

@@ -1,12 +1,13 @@
 <p align="center">
-  <img src="icon.svg" width="160" alt="App doctor — telemóvel com batimento cardíaco, penso rápido e estetoscópio">
+  <img src="icon.svg" width="160" alt="App studio — telemóvel com batimento cardíaco, uma lâmpada, um lápis e um estetoscópio">
 </p>
 
-<h1 align="center">App doctor — Claude Skill</h1>
+<h1 align="center">App studio — Claude Skill</h1>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/Claude-Skill-D97757" alt="Claude Skill">
+  <img src="https://img.shields.io/badge/modos-Idear%20·%20Criar%20·%20Diagnosticar-8A63D2" alt="Modos">
 </p>
 
 <p align="center">
@@ -19,98 +20,100 @@
 
 ## Português
 
-Uma [skill](#o-que-é-uma-skill) para o **Claude** que funciona como **médico da tua app**, seja iOS, Android, Flutter, React Native/Expo ou desktop. Examina tudo o que afeta o bom funcionamento, mostra-te um relatório de saúde por prioridades, dá-te a opinião sincera sobre o que fazer primeiro e corrige — só o que autorizares. É especialmente útil **antes de enviar para a App Store ou para o Google Play**.
+Um **estúdio completo de aplicações** para o **Claude** (iOS, Android, Flutter, React Native/Expo, desktop), com três modos que se encadeiam:
 
-### O que examina (12 áreas)
+| Modo | Para quê | Exemplo de pedido |
+|---|---|---|
+| 💡 **Idear** | Ideias detalhadas de **apps e jogos novos** que consegues construir e publicar sozinho | "Que jogo devia fazer a seguir?" |
+| 🛠️ **Criar** | **Constrói uma app contigo de raiz**, da ideia ao MVP e à publicação na App Store e no Google Play | "Quero fazer uma app para registar as minhas plantas" |
+| 🩺 **Diagnosticar** | **Examina e corrige** tudo o que afeta a app: 12 áreas, 140+ verificações, relatório de saúde com opinião e "pronta para a loja?" | "A minha app crasha" · "A Apple rejeitou" |
 
-| Área | Exemplos |
-|---|---|
-| 💥 **Estabilidade** | crashes, `!`/`try!`/`!!` perigosos, thread principal, concorrência, ANRs, registo de crashes |
-| 🧩 **Funcionamento e idiomas** | fluxos de ponta a ponta, atualização sem perder dados, deep links, notificações, traduções, plurais, datas |
-| 📐 **Layout e alinhamentos** | iPhone SE até Pro Max e iPad, áreas seguras e Dynamic Island, edge-to-edge no Android, teclado, texto grande, modo escuro, rotação |
-| 🖼️ **Ícones e imagens** | ícone em todas as variantes (escuro, tingido, adaptativo, monocromático), resoluções, memória de imagens, capturas da loja |
-| ⚡ **Desempenho e bateria** | arranque, bloqueios, fluidez, fugas de memória, rede, localização, tamanho da app, jogos |
-| 🔒 **Segurança** | segredos dentro da app, Keychain/Keystore, HTTPS/ATS, deep links, WebViews, validação de compras, regras do backend, manifest Android |
-| 🛡️ **Privacidade** | permissões e textos de pedido, Privacy Manifest e APIs de razão obrigatória, etiquetas de privacidade, Data safety, ATT, apagar conta, RGPD |
-| ♿ **Acessibilidade** | VoiceOver/TalkBack, texto dinâmico, contraste, alvos de 44 pt/48 dp, reduzir movimento |
-| 🏪 **Regras das lojas** | motivos de rejeição mais comuns da App Store e do Google Play, metadados, restaurar compras, Iniciar sessão com a Apple, target API |
-| 📶 **Rede, offline e dados** | modo avião, erros do servidor, onde guardar dados, migrações sem perder progresso |
-| 💳 **Compras e monetização** | produtos, preços da loja, estados pendente/cancelado, restaurar, subscrições, paywall honesto, anúncios |
-| 🧹 **Build e código** | avisos, versões, configuração de release, assinatura, dSYM, linter, testes |
+Em todos os modos o Claude **faz perguntas, mostra provas, dá a sua opinião honesta e só avança com a tua autorização**. A ideia escolhida no Idear é o briefing do Criar; o Criar termina com um exame do Diagnosticar antes de ir para a loja; um diagnóstico pode levar a ideias para a próxima versão.
 
-A lista completa (mais de 140 verificações) está em [`references/checklist.md`](references/checklist.md) e os comandos (Xcode, `simctl`, Gradle, `adb`, Flutter, Expo) em [`references/como-verificar.md`](references/como-verificar.md).
+### 💡 Idear
 
-### Como trabalha
+- Duas a três ideias **bem desenvolvidas**, cada uma com: o que é, para quem, o ciclo principal, o que a torna diferente, como ganha dinheiro, esforço, primeiros passos e riscos.
+- Ideias originais: nunca clones de apps ou jogos existentes.
+- Tem um [catálogo de inspiração](references/idear/inspiracao.md) com:
+  - géneros e mecânicas de jogos;
+  - utilidades;
+  - funcionalidades do sistema que dão ideias (widgets, Live Activities, IA no dispositivo);
+  - como validar uma ideia antes de a construir;
+  - uma grelha para comparar ideias;
+  - ideias a evitar.
 
-1. **🩺 Consulta:** faz-te algumas perguntas, como em que plataforma está a app, em que fase (desenvolvimento, quase na loja, rejeitada), se é um exame completo ou um problema concreto, e se pode corrigir.
-2. **🔬 Exame:** verifica com provas. Compila a app, corre-a no simulador no ecrã mais pequeno e no maior, em modo escuro e com o maior texto, lê os registos de crash e procura no código os padrões perigosos. Sem prova, não aponta problemas.
-3. **📋 Relatório de saúde:** mostra uma tabela por área (🟢🟡🟠🔴), os problemas por gravidade e, se for caso disso, a resposta a "Pronta para enviar para a loja? Sim / Ainda não".
-4. **💬 Opinião e perguntas:** diz-te francamente o que faria primeiro e o que não vale o esforço, e pergunta-te o que só tu podes decidir. Se sugerires algo, diz-te honestamente se concorda e porquê.
-5. **🛠️ Tratamento:** corrige uma coisa de cada vez, sem nunca perder dados dos utilizadores, verifica cada correção e pede confirmação antes de tudo o que é arriscado.
-6. **✅ Alta:** resume o que ficou resolvido, o que falta, o que tens de fazer tu (por exemplo no App Store Connect) e a lista final antes de enviar para a loja.
+### 🛠️ Criar
 
-### Exemplos de pedidos
+```
+1. Briefing ─► 2. Plano (MVP) ─► ✋ ─► 3. Design ─► 4. Fluxo principal ─► ✋ ─► 5. Resto da app ─► 6. Verificação ─► ✋ ─► 7. Lojas e entrega
+```
 
-- "A minha app crasha quando abro as definições"
-- "Está pronta para enviar para a App Store?"
-- "A Apple rejeitou com a regra 5.1.1, o que faço?"
-- "No iPhone SE os botões ficam cortados"
-- "A app é segura? Cumpre o RGPD?"
-- "Revê a minha app toda e melhora o que conseguires"
+- **Briefing** com as perguntas para cada tipo de app: jogos, utilidades, hábitos, saúde, crianças, social, negócios, brincadeiras.
+- **Plano do MVP**: a versão mais pequena que já entrega valor, com a tecnologia, os dados e os custos. ✋ Aprovas.
+- **Design nativo**, segundo as regras da Apple e da Google.
+- **Fluxo principal primeiro**, a correr no simulador, com capturas. ✋ Aprovas.
+- **Resto da app**: dados que nunca se perdem nas atualizações, permissões no momento certo, acessibilidade, ícone, compras com restauro, Privacy Manifest.
+- **Verificação** com o modo Diagnosticar. ✋ Aprovas.
+- **Publicação**: TestFlight, página da loja, privacidade, revisão e um guia `COMO-ATUALIZAR.md`.
+- **Guias:**
+  - [`briefing`](references/criar/briefing.md);
+  - [`stack`](references/criar/stack.md): SwiftUI, Compose, Flutter, Expo, SpriteKit/Godot, onde guardar os dados, contas, compras, anúncios, crashes e custos;
+  - [`design`](references/criar/design.md): convenções das plataformas, sistema de design, ecrãs essenciais, ícone e jogos;
+  - [`lancamento`](references/criar/lancamento.md): contas, assinatura, testes, página da loja, privacidade, revisão, rejeições e depois do lançamento.
 
-Vê um exemplo completo de relatório em [`examples/exemplo.md`](examples/exemplo.md).
+### 🩺 Diagnosticar
+
+**Consulta → exame com provas → relatório de saúde (🔴🟠🟡🟢) → a minha opinião → decides → tratamento verificado → alta.**
+
+O exame cobre 12 áreas: estabilidade · funcionamento e idiomas · layout em todos os ecrãs · ícones e imagens · desempenho e bateria · segurança · privacidade (Privacy Manifest, etiquetas, Data safety, ATT) · acessibilidade · regras da App Store e do Google Play · rede e dados · compras · build e código.
+
+Guias: [`checklist`](references/diagnostico/checklist.md) (140+ verificações) e [`como-verificar`](references/diagnostico/como-verificar.md) (Xcode, `simctl`, Gradle, `adb`, Flutter, Expo).
 
 ### Segurança e ética
 
-A skill só examina apps que são tuas ou que estás autorizado a analisar, e todas as verificações são passivas: lê código e configuração e corre a app no simulador. Nunca ataca servidores nem explora falhas. Quando encontra um segredo exposto, não o repete e diz-te como o revogar.
+Só examina apps tuas, e as verificações de segurança são sempre passivas. Nunca perde dados dos utilizadores e nunca cria clones. Também não cria contas, não faz compras e não envia para as lojas sem ti: prepara tudo e diz-te exatamente que botão carregar.
 
-### Funciona com
+### Exemplos
 
-Swift, SwiftUI, UIKit, SpriteKit, Objective-C, Kotlin, Java, Jetpack Compose, Flutter/Dart, React Native, Expo, Electron e apps de macOS. Funciona melhor no **Claude Code**, com acesso ao projeto e ao simulador ou emulador.
+- [Idear: jogos para iPhone que se fazem num mês](examples/idear.md)
+- [Criar: briefing e plano de uma app de plantas](examples/criar.md)
+- [Diagnosticar: relatório de uma app de receitas antes da App Store](examples/diagnosticar.md)
 
 ### Instalação
 
-**Claude Code (para todos os teus projetos)**
+**Claude Code**
 
 ```bash
-git clone https://github.com/mozuraa/claude-skill-app-doctor.git ~/.claude/skills/app-doctor
+git clone https://github.com/mozuraa/claude-skill-app-studio.git ~/.claude/skills/app-studio
 ```
 
-**Claude Code (só num projeto)** — dentro da pasta do projeto:
+**Ou com toda a biblioteca, como plugin:**
 
-```bash
-git clone https://github.com/mozuraa/claude-skill-app-doctor.git .claude/skills/app-doctor
 ```
-
-**Ou com toda a biblioteca, como plugin:** ver [mozuraa/claude-skills](https://github.com/mozuraa/claude-skills).
+/plugin marketplace add mozuraa/claude-skills
+/plugin install estudios@mozuraa-skills
+```
 
 **App Claude / claude.ai:** carrega em **Code → Download ZIP** e carrega o ZIP nas **Definições**, na secção **Skills** (em *Capacidades*).
 
-Abre uma sessão nova para a skill ser carregada. Para atualizar: `cd ~/.claude/skills/app-doctor && git pull`.
-
-### O que é uma skill?
-
-Uma skill é uma pasta com um ficheiro `SKILL.md`: um nome, uma descrição de quando deve ser usada e instruções. O Claude lê só a descrição até ela ser útil; quando o pedido encaixa, carrega as instruções e segue-as.
+Abre uma sessão nova para a skill ser carregada. Para atualizar: `cd ~/.claude/skills/app-studio && git pull`.
 
 ### Estrutura
 
 ```
-claude-skill-app-doctor/
-├── SKILL.md                   # a skill: consulta → exame → relatório → decisão → tratamento → alta
+claude-skill-app-studio/
+├── SKILL.md                     # os 3 modos e as regras comuns
 ├── references/
-│   ├── checklist.md           # 12 áreas, 140+ verificações (iOS, Android e multiplataforma)
-│   └── como-verificar.md      # Xcode, simctl, Gradle, adb, Flutter, Expo, pesquisas no código
-├── examples/
-│   └── exemplo.md             # exemplo de consulta e relatório
-├── icon.svg
-├── README.md
-├── CHANGELOG.md
-└── LICENSE
+│   ├── idear/inspiracao.md      # géneros, utilidades, validação, comparação
+│   ├── criar/                   # briefing, stack, design, lancamento
+│   └── diagnostico/             # checklist (12 áreas) e como-verificar (comandos)
+├── examples/                    # idear.md, criar.md, diagnosticar.md
+├── icon.svg · README.md · CHANGELOG.md · LICENSE
 ```
 
-### Contribuir
+### História
 
-As regras das lojas mudam todos os anos. Se encontrares algo desatualizado, abre uma *issue* ou um *pull request*.
+A versão 2.0 junta duas skills anteriores, **ideias-apps** e **app-doctor**, cujos históricos de git estão preservados neste repositório, e acrescenta o modo Criar.
 
 ### Licença
 
@@ -120,76 +123,33 @@ As regras das lojas mudam todos os anos. Se encontrares algo desatualizado, abre
 
 ## English
 
-A [skill](#what-is-a-skill) for **Claude** that acts as your **app's doctor**, for iOS, Android, Flutter, React Native/Expo or desktop. It examines everything that affects how well the app works, shows a health report by priority, gives its honest opinion on what to do first, and fixes things, but only what you approve. It's especially useful **before submitting to the App Store or Google Play**.
+A **complete app studio** for **Claude** (iOS, Android, Flutter, React Native/Expo, desktop), with three linked modes:
 
-### What it examines (12 areas)
+| Mode | What for | Example prompt |
+|---|---|---|
+| 💡 **Idear** (Ideate) | Detailed ideas for **new apps and games** you can build and ship on your own | "What game should I make next?" |
+| 🛠️ **Criar** (Create) | **Builds an app with you from scratch**, from the idea and MVP to the App Store and Google Play | "I want an app to track my plants" |
+| 🩺 **Diagnosticar** (Diagnose) | **Examines and fixes** everything that affects an app: 12 areas, 140+ checks, a health report with its opinion and "ready for the store?" | "My app crashes" · "Apple rejected it" |
 
-| Area | Examples |
-|---|---|
-| 💥 **Stability** | crashes, dangerous `!`/`try!`/`!!`, main thread, concurrency, ANRs, crash reporting |
-| 🧩 **Functionality & languages** | end-to-end flows, updates without data loss, deep links, notifications, translations, plurals, dates |
-| 📐 **Layout & alignment** | iPhone SE to Pro Max and iPad, safe areas and Dynamic Island, Android edge-to-edge, keyboard, large text, dark mode, rotation |
-| 🖼️ **Icons & images** | app icon in every variant (dark, tinted, adaptive, monochrome), resolutions, image memory, store screenshots |
-| ⚡ **Performance & battery** | launch, hangs, smoothness, memory leaks, network, location, app size, games |
-| 🔒 **Security** | secrets inside the app, Keychain/Keystore, HTTPS/ATS, deep links, WebViews, purchase verification, backend rules, Android manifest |
-| 🛡️ **Privacy** | permissions and purpose strings, Privacy Manifest and required-reason APIs, privacy labels, Data safety, ATT, account deletion, GDPR |
-| ♿ **Accessibility** | VoiceOver/TalkBack, Dynamic Type, contrast, 44 pt/48 dp targets, reduce motion |
-| 🏪 **Store rules** | the most common App Store and Google Play rejection reasons, metadata, restore purchases, Sign in with Apple, target API |
-| 📶 **Network, offline & data** | airplane mode, server errors, where to store data, migrations without losing progress |
-| 💳 **Purchases & monetization** | products, store prices, pending/cancelled states, restore, subscriptions, honest paywall, ads |
-| 🧹 **Build & code** | warnings, versions, release configuration, signing, dSYMs, linter, tests |
+In every mode Claude **asks questions, shows evidence, gives its honest opinion and only proceeds with your approval**.
 
-The full list (140+ checks) is in [`references/checklist.md`](references/checklist.md) and the commands (Xcode, `simctl`, Gradle, `adb`, Flutter, Expo) in [`references/como-verificar.md`](references/como-verificar.md) (in Portuguese; Claude translates as needed).
+- **Ideate:** 2–3 original, well-developed ideas (audience, core loop, differentiation, business model, effort, first steps, risks), plus an inspiration catalog with validation methods and a comparison grid.
+- **Create:** 7 phases with 3 approvals. It starts with an honest MVP, follows each platform's design conventions, builds the core loop first, keeps data versioned so updates never lose progress, and finishes with a store-ready verification and launch. Guides cover technology choice, data, accounts, purchases, ads, crash reporting, costs, design and the full store submission process.
+- **Diagnose:** consultation → evidence-based exam → health report → opinion → you decide → verified fixes → discharge. It covers stability, functionality, layout on every screen, icons, performance and battery, security, privacy (Privacy Manifest, labels, Data safety, ATT), accessibility, store rules, data, purchases and build.
 
-### How it works
-
-1. **🩺 Consultation:** asks you a few questions, such as which platform the app is on, what stage it's at (in development, about to ship, rejected), whether you want a full checkup or have a specific problem, and whether it may fix things.
-2. **🔬 Examination:** checks with evidence. It builds the app and runs it in the simulator on the smallest and largest screens, in dark mode and with the largest text, reads crash logs and searches the code for dangerous patterns. Without evidence, it doesn't report a problem.
-3. **📋 Health report:** shows a table by area (🟢🟡🟠🔴), the issues by severity and, when relevant, the answer to "Ready to submit? Yes / Not yet".
-4. **💬 Opinion & questions:** tells you frankly what it would do first and what isn't worth the effort, and asks you about the decisions only you can make. If you suggest something, it tells you honestly whether it agrees and why.
-5. **🛠️ Treatment:** fixes one thing at a time without ever losing user data, verifies each fix, and asks before anything risky.
-6. **✅ Discharge:** summarizes what was fixed, what's left, what you need to do yourself (for example in App Store Connect) and a final pre-submission checklist.
-
-### Example prompts
-
-- "My app crashes when I open settings"
-- "Is it ready for the App Store?"
-- "Apple rejected it under guideline 5.1.1, what do I do?"
-- "On iPhone SE the buttons get cut off"
-- "Is the app secure? Is it GDPR compliant?"
-- "Review my whole app and improve whatever you can"
-
-### Safety & ethics
-
-The skill only examines apps you own or are authorized to analyze, and every check is passive: it reads code and configuration and runs the app in the simulator. It never attacks servers or exploits anything. When it finds an exposed secret, it doesn't repeat it and tells you how to revoke it.
-
-### Works with
-
-Swift, SwiftUI, UIKit, SpriteKit, Objective-C, Kotlin, Java, Jetpack Compose, Flutter/Dart, React Native, Expo, Electron and macOS apps. It works best in **Claude Code**, with access to the project and a simulator or emulator.
+The guides are in Portuguese, but Claude replies in the language you write in.
 
 ### Installation
 
-**Claude Code (all projects)**
-
 ```bash
-git clone https://github.com/mozuraa/claude-skill-app-doctor.git ~/.claude/skills/app-doctor
+git clone https://github.com/mozuraa/claude-skill-app-studio.git ~/.claude/skills/app-studio
 ```
 
-**Claude Code (one project only)**, from the project folder:
+Or with the whole library as a plugin: `/plugin marketplace add mozuraa/claude-skills` then `/plugin install estudios@mozuraa-skills`. For the Claude app / claude.ai, use **Code → Download ZIP** and upload it under **Settings → Skills**.
 
-```bash
-git clone https://github.com/mozuraa/claude-skill-app-doctor.git .claude/skills/app-doctor
-```
+### History
 
-**Or with the whole library, as a plugin:** see [mozuraa/claude-skills](https://github.com/mozuraa/claude-skills).
-
-**Claude app / claude.ai:** click **Code → Download ZIP** and upload the ZIP in **Settings**, under **Skills** (in *Capabilities*).
-
-Start a new session so the skill is loaded. To update: `cd ~/.claude/skills/app-doctor && git pull`.
-
-### What is a skill?
-
-A skill is a folder with a `SKILL.md` file: a name, a description of when it should be used, and instructions. Claude only reads the description until it becomes relevant; when a request matches, it loads the instructions and follows them.
+Version 2.0 merges two earlier skills, **ideias-apps** and **app-doctor** (both git histories are preserved here), and adds the Create mode.
 
 ### License
 
